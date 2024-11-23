@@ -1,8 +1,10 @@
 import type { Server } from 'http';
+import type { Http2Server } from 'http2';
+
 import type { AddressInfo } from 'net';
 import { format } from 'url';
 
-export function urlForHttpServer(httpServer: Server): string {
+export function urlForHttpServer(httpServer: Server | Http2Server): string {
   const { address, port } = httpServer.address() as AddressInfo;
 
   // Convert IPs which mean "any address" (IPv4 or IPv6) into localhost
